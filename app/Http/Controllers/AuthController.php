@@ -17,4 +17,12 @@ class AuthController extends Controller
             return 'Gagal masuk';
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }
